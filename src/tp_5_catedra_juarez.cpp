@@ -1,15 +1,26 @@
-//============================================================================
-// Name        : tp_5_catedra_juarez.cpp
-// Author      : 
-// Version     :
-// Copyright   : 
-// Description : Hello World in C++, Ansi-style
-//============================================================================
+#include "utilities/AvlTree.hpp"
+#include "utilities/Console.hpp"
 
-#include <iostream>
+
 using namespace std;
 
 int main() {
-	cout << "" << endl; // prints 
+
+	AvlTree<int> avlTree;
+
+	for (int i = 0; i < 15; ++i) {
+		avlTree.insert(i);
+	}
+
+	avlTree.display();
+
+	for (int i = 0; i < 5; ++i) {
+		avlTree.erase(i*2);
+	}
+
+	for (int i = 0; i < avlTree.size(); ++i) {
+		Console::instance().write(avlTree[i]);
+	}
+
 	return 0;
 }

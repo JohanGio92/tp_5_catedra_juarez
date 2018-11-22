@@ -1,0 +1,5 @@
+EZE Ministro-Pistarini Ezeiza Argentina 34.75 4 12 46
+LAX Aeropuerto-internacional-de-los-angeles Angeles EEUU 14 9 87 69
+ORD Jorge-Chavez Callao Peru 45.5 5 6  7
+LAN Rica-Santiaguenia Santiago-de-Chile Chile 56.6 4 3 6
+BRZ Carnival Sau-Paulo Brazil 46.5 7 4 9
