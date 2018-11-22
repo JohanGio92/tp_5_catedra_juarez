@@ -30,10 +30,15 @@ double Console::readDouble(std::string message) {
 	return input;
 }
 
-Console::~Console() {
-}
-
 void Console::separate() {
 	this->write("-----------------------------------------");
 }
+
+void writeln(){
+	std::cout << std::endl;
+}
+
+Console::~Console() {
+}
+
 

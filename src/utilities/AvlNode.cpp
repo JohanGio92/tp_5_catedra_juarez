@@ -1,4 +1,5 @@
 #include "AvlNode.hpp"
+#include "../models/Airport.hpp"
 
 template <class T>
 AvlNode<T>::AvlNode(T value): value(value){
@@ -51,3 +52,4 @@ template class AvlNode<short>;
 template class AvlNode<long>;
 template class AvlNode<long long>;
 template class AvlNode<std::string>;
+template class AvlNode<Airport>;

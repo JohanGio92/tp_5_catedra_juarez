@@ -9,7 +9,7 @@ struct AvlNode {
     AvlNode *left;
     AvlNode *right;
     
-    const T value;
+    T value;
     int count;
     int height;
     

@@ -1,4 +1,5 @@
 #include "AvlTree.hpp"
+#include "../models/Airport.hpp"
 
 template <class T>
 AvlTree<T>::AvlTree(){
@@ -45,8 +46,10 @@ void AvlTree<T>::insert(T value){
         
         if ((*indirect)->value > value)
             indirect = &((*indirect)->left);
-        else
+        else if ((*indirect)->value < value)
             indirect = &((*indirect)->right);
+        else
+        	return ;
     }
     
     *indirect = new AvlNode<T>(value);
@@ -287,9 +290,9 @@ void AvlTree<T>::display(AvlNode<T> *cur, int depth, int state){  // state: 1 ->
         display(cur->right, depth + 1, 2);
 }
 
-
 template class AvlTree<int>;
 template class AvlTree<short>;
 template class AvlTree<long>;
 template class AvlTree<long long>;
 template class AvlTree<std::string>;
+template class AvlTree<Airport>;
