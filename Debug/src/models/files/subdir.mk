@@ -4,26 +4,17 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../src/utilities/AvlNode.cpp \
-../src/utilities/AvlTree.cpp \
-../src/utilities/ClosedInterval.cpp \
-../src/utilities/Console.cpp 
+../src/models/files/FlightRecord.cpp 
 
 OBJS += \
-./src/utilities/AvlNode.o \
-./src/utilities/AvlTree.o \
-./src/utilities/ClosedInterval.o \
-./src/utilities/Console.o 
+./src/models/files/FlightRecord.o 
 
 CPP_DEPS += \
-./src/utilities/AvlNode.d \
-./src/utilities/AvlTree.d \
-./src/utilities/ClosedInterval.d \
-./src/utilities/Console.d 
+./src/models/files/FlightRecord.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
-src/utilities/%.o: ../src/utilities/%.cpp
+src/models/files/%.o: ../src/models/files/%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: GCC C++ Compiler'
 	g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"

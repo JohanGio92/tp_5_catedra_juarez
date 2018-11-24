@@ -23,7 +23,9 @@ C_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+src/aplication \
 src/models \
+src/models/files \
 src \
 src/utilities \
 

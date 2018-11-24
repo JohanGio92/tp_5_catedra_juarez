@@ -11,13 +11,14 @@ Console& Console::instance() {
 int Console::readInt(std::string message) {
 	int input;
 	this->write(message);
-	std:: cin >> input;
+	std::cin >> input;
 	return input;
 }
 
 std::string Console::readString(std::string message) {
 	std::string input;
 	this->write(message);
+	ignore();
 	std::getline(std::cin, input);
 	return input;
 }
@@ -34,11 +35,22 @@ void Console::separate() {
 	this->write("-----------------------------------------");
 }
 
-void writeln(){
+void Console::writeln(){
 	std::cout << std::endl;
+}
+
+void Console::writeRightBranch() {
+	std::cout << "┌───";
+}
+
+void Console::writeLeftBranch() {
+	std::cout << "└───";
+}
+
+void Console::ignore() {
+	std::cin.ignore();
 }
 
 Console::~Console() {
 }
-
 

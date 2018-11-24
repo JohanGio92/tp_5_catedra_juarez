@@ -10,6 +10,7 @@
 
 template <class T>
 class AvlTree {
+private:
     int _size;
     AvlNode<T> *root;
     
@@ -18,6 +19,7 @@ class AvlTree {
     
 public:
     AvlTree();
+    AvlTree(const AvlTree<T>& avlTree);
     ~AvlTree();
     
     void insert(T value);
@@ -39,3 +41,4 @@ public:
 };
 
 #endif
+

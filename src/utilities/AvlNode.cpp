@@ -53,3 +53,4 @@ template class AvlNode<long>;
 template class AvlNode<long long>;
 template class AvlNode<std::string>;
 template class AvlNode<Airport>;
+template class AvlNode<Airport*>;

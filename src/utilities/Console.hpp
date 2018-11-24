@@ -17,7 +17,10 @@ public:
 	template <typename T>
 	void writeln(T message);
 	void writeln();
+	void writeLeftBranch();
+	void writeRightBranch();
 	void separate();
+	void ignore();
 	virtual ~Console();
 };
 

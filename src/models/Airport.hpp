@@ -5,6 +5,8 @@
 #include "FlightInformation.hpp"
 #include <tuple>
 #include "../utilities/Console.hpp"
+#include <fstream>
+#include <iostream>
 #include <ostream>
 
 typedef std::tuple<std::string,
@@ -17,10 +19,14 @@ private:
 	Information information;
 public:
 	Airport();
+	Airport(std::string IATACode);
+	void readCode();
 	void read();
+	void read(std::ifstream& entryRoute);
 	bool operator<(Airport& airport);
 	bool operator>(Airport& airport);
 	bool operator>=(Airport& airport);
+	bool operator<=(Airport& airport);
 	bool operator==(Airport& airport);
 	bool operator!=(Airport& airport);
 	friend std::ostream& operator<<(std::ostream& output, Airport& airport);

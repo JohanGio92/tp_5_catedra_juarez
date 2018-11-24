@@ -7,6 +7,12 @@ AvlTree<T>::AvlTree(){
     _size = 0;
 }
 
+template<class T>
+AvlTree<T>::AvlTree(const AvlTree<T>& avlTree) {
+	root = avlTree.root;
+	_size = avlTree._size;
+}
+
 template <class T>
 AvlTree<T>::~AvlTree(){
     clear();
@@ -280,9 +286,9 @@ void AvlTree<T>::display(AvlNode<T> *cur, int depth, int state){  // state: 1 ->
         printf("     ");
     
     if (state == 1) // left
-        printf("┌───");
+    	Console::instance().writeRightBranch();
     else if (state == 2)  // right
-        printf("└───");
+        Console::instance().writeLeftBranch();
     
     std::cout << "[" << cur->value << "] - (" << cur->count << ", " << cur->height << ")" << std::endl;
     
@@ -296,3 +302,4 @@ template class AvlTree<long>;
 template class AvlTree<long long>;
 template class AvlTree<std::string>;
 template class AvlTree<Airport>;
+template class AvlTree<Airport*>;
