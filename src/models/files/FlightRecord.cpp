@@ -1,6 +1,5 @@
 #include "FlightRecord.hpp"
 
-
 const std::string FlightRecord::FILE_NAME = "./src/models/files/airports.txt";
 
 FlightRecord::FlightRecord() {

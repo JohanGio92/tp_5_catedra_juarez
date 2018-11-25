@@ -1,9 +1,8 @@
 #ifndef APLICATION_AIRLINE_HPP_
 #define APLICATION_AIRLINE_HPP_
 
-#include "../models/Airport.hpp"
-#include "../utilities/AvlTree.hpp"
 #include "Menu.hpp"
+#include "../utilities/ClosedInterval.hpp"
 
 class Airline {
 private:

@@ -24,27 +24,39 @@ int AvlNode<T>::balanceFactor(){
 }
 
 template <class T>
-AvlNode<T>* AvlNode<T>::left_rotate(){
-    AvlNode* R = right;
+AvlNode<T>* AvlNode<T>::leftRotate(){
+    AvlNode* _right = right;
     right = right->left;
-    R->left = this;
+    _right->left = this;
     
-    this->updateValues();  // the order is important
-    R->updateValues();
+    this->updateValues();
+    _right->updateValues();
     
-    return R;
+    return _right;
 }
 
 template <class T>
-AvlNode<T>* AvlNode<T>::right_rotate(){
-    AvlNode* L = left;
+AvlNode<T>* AvlNode<T>::rightRotate(){
+    AvlNode* _left = left;
     left = left->right;
-    L->right = this;
+    _left->right = this;
     
-    this->updateValues();  // the order is important
-    L->updateValues();
+    this->updateValues();
+    _left->updateValues();
     
-    return L;
+    return _left;
+}
+
+template<class T>
+AvlNode<T>* AvlNode<T>::leftRightRotate() {
+	right = right->rightRotate();
+	return this->leftRotate();
+}
+
+template<class T>
+AvlNode<T>* AvlNode<T>::rightLeftRotate() {
+	left = left->leftRotate();
+	return this->rightRotate();
 }
 
 template class AvlNode<int>;

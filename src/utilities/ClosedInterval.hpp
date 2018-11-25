@@ -1,7 +1,6 @@
 #ifndef UTILS_CLOSEDINTERVAL_H_
 #define UTILS_CLOSEDINTERVAL_H_
 
-#include <string>
 #include "Console.hpp"
 
 class ClosedInterval {

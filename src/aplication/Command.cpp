@@ -1,8 +1,5 @@
 #include "Command.hpp"
 
-#include "../utilities/Console.hpp"
-
-
 Command::Command(std::string title) {
 	this->title = title;
 }

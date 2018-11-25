@@ -1,9 +1,8 @@
 #ifndef APLICATION_COMMAND_HPP_
 #define APLICATION_COMMAND_HPP_
 
-#include <string>
-#include "../models/Airport.hpp"
 #include "../utilities/AvlTree.hpp"
+
 
 class Command {
 private:

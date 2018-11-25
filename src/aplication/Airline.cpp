@@ -1,6 +1,5 @@
 #include "Airline.hpp"
 
-#include "../utilities/ClosedInterval.hpp"
 #include "CancelationCommand.hpp"
 #include "DisplayerCommand.hpp"
 #include "RegistrationCommand.hpp"

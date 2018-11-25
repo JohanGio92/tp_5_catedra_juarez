@@ -1,9 +1,8 @@
 #ifndef APLICATION_MENU_HPP_
 #define APLICATION_MENU_HPP_
 
-#include <vector>
-
 #include "ExitCommand.hpp"
+#include "../models/files/FlightRecord.hpp"
 
 class Menu {
 private:

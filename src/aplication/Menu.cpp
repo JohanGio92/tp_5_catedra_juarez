@@ -1,7 +1,5 @@
 #include "Menu.hpp"
 
-#include "../models/files/FlightRecord.hpp"
-
 Menu::Menu() {
 	exitCommand = nullptr;
 	FlightRecord flighRecord;

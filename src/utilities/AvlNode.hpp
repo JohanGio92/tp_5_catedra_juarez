@@ -1,9 +1,6 @@
 #ifndef AVLTreeNode_hpp
 #define AVLTreeNode_hpp
 
-#include <string>
-#include <algorithm>
-
 template <class T>
 struct AvlNode {
     AvlNode *left;
@@ -16,9 +13,23 @@ struct AvlNode {
     AvlNode(T value);
     void updateValues();
     int balanceFactor();
-    
-    AvlNode* left_rotate();
-    AvlNode* right_rotate();
+
+	//pre: violation for right - right
+	//post: rotation left
+    AvlNode* leftRotate();
+
+    //pre: violation for left - left
+    //post: rotation right
+    AvlNode* rightRotate();
+
+    //pre: violation for right - left
+	//post: rotation left - right
+    AvlNode* leftRightRotate();
+
+    //pre: violation for right - left
+	//post: rotation right - left
+    AvlNode* rightLeftRotate();
+
 };
 
 #endif

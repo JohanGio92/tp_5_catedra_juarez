@@ -1,5 +1,4 @@
 #include "AvlTree.hpp"
-#include "../models/Airport.hpp"
 
 template <class T>
 AvlTree<T>::AvlTree(){
@@ -81,7 +80,6 @@ void AvlTree<T>::erase(T value){
     
     if (*indirect == nullptr)
         return;
-    
     else
         path.push_back(indirect);
     
@@ -119,15 +117,15 @@ void AvlTree<T>::erase(T value){
         }
         
         else{
-            AvlNode<T> *tmp = *path.back(), *suc = *successor;
+            AvlNode<T> *temporal = *path.back(), *_successor = *successor;
             
-            tmp->left = (*successor)->right;
-            suc->left = (*indirect)->left;
-            suc->right = (*indirect)->right;
+            temporal->left = (*successor)->right;
+            _successor->left = (*indirect)->left;
+            _successor->right = (*indirect)->right;
             
             delete *indirect;
-            *indirect = suc;
-            path[index] = &(suc->right);
+            *indirect = _successor;
+            path[index] = &(_successor->right);
         }
     }
     
@@ -142,20 +140,18 @@ void AvlTree<T>::balance(std::vector<AvlNode<T> **> path){  // starting from roo
     for (auto indirect: path){
         (*indirect)->updateValues();
         
-        if ((*indirect)->balanceFactor() >= 2 and (*indirect)->left->balanceFactor() >= 0)   // left - left
-            *indirect = (*indirect)->right_rotate();
+        if ((*indirect)->balanceFactor() >= 2 and (*indirect)->left->balanceFactor() >= 0)
+            *indirect = (*indirect)->rightRotate();
         
-        else if ((*indirect)->balanceFactor() >= 2){  // left - right
-            (*indirect)->left = (*indirect)->left->left_rotate();
-            *indirect = (*indirect)->right_rotate();
+        else if ((*indirect)->balanceFactor() >= 2){
+            *indirect = (*indirect)->rightLeftRotate();
         }
         
-        else if ((*indirect)->balanceFactor() <= -2 and (*indirect)->right->balanceFactor() <= 0)  // right - right
-            *indirect = (*indirect)->left_rotate();
+        else if ((*indirect)->balanceFactor() <= -2 and (*indirect)->right->balanceFactor() <= 0)
+            *indirect = (*indirect)->leftRotate();
         
-        else if ((*indirect)->balanceFactor() <= -2){  // right - left
-            (*indirect)->right = ((*indirect)->right)->right_rotate();
-            *indirect = (*indirect)->left_rotate();
+        else if ((*indirect)->balanceFactor() <= -2){
+            *indirect = (*indirect)->leftRightRotate();
         }
     }
 }
@@ -173,127 +169,118 @@ int AvlTree<T>::size() const{
 template <class T>
 int AvlTree<T>::find(T value) const{
     AvlNode<T> *direct = root;
-    int idx = 0;
+    int position = 0;
     
     while (direct != nullptr and direct->value != value){
         if (direct->value > value)
             direct = direct->left;
         else{
-            idx += (direct->left ? direct->left->count : 0) + 1;
+            position += (direct->left ? direct->left->count : 0) + 1;
             direct = direct->right;
         }
     }
-    
-    if (direct == nullptr)
-        return -1;
-    
-    else
-        return idx + (direct->left ? direct->left->count : 0);
+    return (direct == nullptr) ? -1 : position + (direct->left ? direct->left->count : 0);
 }
 
 template <class T>
-int AvlTree<T>::upper_bound(T value) const{
+int AvlTree<T>::upperBound(T value) const{
     AvlNode<T> *direct = root;
-    int idx = 0;
+    int position = 0;
     
     while (direct != nullptr){
         if (direct->value > value)
             direct = direct->left;
         else{
-            idx += (direct->left ? direct->left->count : 0) + 1;
+            position += (direct->left ? direct->left->count : 0) + 1;
             direct = direct->right;
         }
     }
-    
-    return idx;
+    return position;
 }
 
 template <class T>
-int AvlTree<T>::lower_bound(T value) const{
+int AvlTree<T>::lowerBound(T value) const{
     AvlNode<T> *direct = root;
-    int idx = 0;
+    int position = 0;
     
     while (direct != nullptr){
         if (direct->value >= value)
             direct = direct->left;
         else{
-            idx += (direct->left ? direct->left->count : 0) + 1;
+            position += (direct->left ? direct->left->count : 0) + 1;
             direct = direct->right;
         }
     }
-    
-    return idx;
+    return position;
 }
 
 template <class T>
-const T& AvlTree<T>::find_min() const{
-    AvlNode<T> *cur = root;
+const T& AvlTree<T>::findMin() const{
+    AvlNode<T> *iterator = root;
     
-    while (cur->left != nullptr)
-        cur = cur->left;
+    while (iterator->left != nullptr)
+        iterator = iterator->left;
     
-    return cur->value;
+    return iterator->value;
 }
 
 template <class T>
-const T& AvlTree<T>::find_max() const{
-    AvlNode<T> *cur = root;
+const T& AvlTree<T>::findMax() const{
+    AvlNode<T> *iterator = root;
     
-    while (cur->right != nullptr)
-        cur = cur->right;
+    while (iterator->right != nullptr)
+        iterator = iterator->right;
     
-    return cur->value;
+    return iterator->value;
 }
 
 template <class T>
-const T& AvlTree<T>::operator[](int idx) const{
-    AvlNode<T> *cur = root;
-    int left = cur->left != nullptr ? cur->left->count : 0;
+const T& AvlTree<T>::operator[](int position) const{
+    AvlNode<T> *iterator = root;
+    int left = iterator->left != nullptr ? iterator->left->count : 0;
     
-    while (left != idx){
-        if (left < idx){
-            idx -= left + 1;
-            
-            cur = cur->right;
-            left = cur->left != nullptr ? cur->left->count : 0;
-        }
-        
-        else{
-            cur = cur->left;
-            left = cur->left != nullptr ? cur->left->count : 0;
-        }
+    while (left != position) {
+		if (left < position) {
+			position -= left + 1;
+			iterator = iterator->right;
+			left = iterator->left != nullptr ? iterator->left->count : 0;
+		} else {
+			iterator = iterator->left;
+			left = iterator->left != nullptr ? iterator->left->count : 0;
+		}
     }
     
-    return cur->value;
+    return iterator->value;
 }
 
 template <class T>
 void AvlTree<T>::display(){
-    printf("\n");
+    Console::instance().writeln();
     if (root != nullptr)
         display(root);
     else
-        printf("Empty");
-    printf("\n");
+    	Console::instance().writeln("Empty");
+    Console::instance().writeln();
 }
 
 template <class T>
-void AvlTree<T>::display(AvlNode<T> *cur, int depth, int state){  // state: 1 -> left, 2 -> right , 0 -> root
-    if (cur->left)
-        display(cur->left, depth + 1, 1);
+void AvlTree<T>::display(AvlNode<T> *iterator, int depth, int state){
+    if (iterator->left)
+        display(iterator->left, depth + 1, 1);
     
     for (int i=0; i < depth; i++)
-        printf("     ");
-    
-    if (state == 1) // left
+    	Console::instance().write("     ");
+
+    if (state == 1)
     	Console::instance().writeRightBranch();
-    else if (state == 2)  // right
+    else if (state == 2)
         Console::instance().writeLeftBranch();
     
-    std::cout << "[" << cur->value << "] - (" << cur->count << ", " << cur->height << ")" << std::endl;
-    
-    if (cur->right)
-        display(cur->right, depth + 1, 2);
+    std::cout << "{" << iterator->value << "} " << std::endl;
+    //optional - (" << iterator->count << ", " << iterator->height << ")"
+
+    if (iterator->right)
+        display(iterator->right, depth + 1, 2);
 }
 
 template class AvlTree<int>;

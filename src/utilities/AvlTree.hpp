@@ -1,10 +1,9 @@
 #ifndef AVLTree_hpp
 #define AVLTree_hpp
 
-#include <string>
-#include <iostream>
 #include <vector>
 #include <algorithm>
+#include "../models/Airport.hpp"
 
 #include "AvlNode.hpp"
 
@@ -30,13 +29,12 @@ public:
     int size() const;
     
     int find(T value) const;
-    int lower_bound(T value) const;
-    int upper_bound(T value) const;
+    int lowerBound(T value) const;
+    int upperBound(T value) const;
     
-    const T& find_min() const;
-    const T& find_max() const;
+    const T& findMin() const;
+    const T& findMax() const;
     const T& operator[](int idx) const;
-    
     void display();
 };
 

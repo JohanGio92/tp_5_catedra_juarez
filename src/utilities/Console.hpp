@@ -4,6 +4,8 @@
 #include <string>
 #include <iostream>
 #include <sstream>
+#include <ostream>
+#include <fstream>
 
 class Console {
 public:

@@ -3,3 +3,8 @@ LAX Aeropuerto-internacional-de-los-angeles Angeles EEUU 14 9 87 69
 ORD Jorge-Chavez Callao Peru 45.5 5 6  7
 LAN Rica-Santiaguenia Santiago-de-Chile Chile 56.6 4 3 6
 BRZ Carnival Sau-Paulo Brazil 46.5 7 4 9
+CAT Ministro-Pistarini Ezeiza Dinamarca 34.75 4 12 46
+FRC Aeropuerto-internacional-de-los-angeles Angeles Colombia 14 9 87 69
+ING Jorge-Chavez Callao Bolivia 45.5 5 6  7
+POS Rica-Santiaguenia Santiago-de-Chile Mexico 56.6 4 3 6
+YRB Carnival Sau-Paulo España 46.5 7 4 9
