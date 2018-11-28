@@ -1,5 +1,7 @@
 #include "Console.hpp"
 
+int Console::UNO = 1;
+
 Console::Console() {
 }
 
@@ -18,7 +20,6 @@ int Console::readInt(std::string message) {
 std::string Console::readString(std::string message) {
 	std::string input;
 	this->write(message);
-	ignore();
 	std::getline(std::cin, input);
 	return input;
 }
@@ -49,6 +50,10 @@ void Console::writeLeftBranch() {
 
 void Console::ignore() {
 	std::cin.ignore();
+}
+
+void Console::clear() {
+	std::cin.clear();
 }
 
 Console::~Console() {

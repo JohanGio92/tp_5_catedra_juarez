@@ -10,6 +10,7 @@ CPP_SRCS += \
 ../src/aplication/DisplayerCommand.cpp \
 ../src/aplication/ExitCommand.cpp \
 ../src/aplication/Menu.cpp \
+../src/aplication/QueryCommand.cpp \
 ../src/aplication/RegistrationCommand.cpp 
 
 OBJS += \
@@ -19,6 +20,7 @@ OBJS += \
 ./src/aplication/DisplayerCommand.o \
 ./src/aplication/ExitCommand.o \
 ./src/aplication/Menu.o \
+./src/aplication/QueryCommand.o \
 ./src/aplication/RegistrationCommand.o 
 
 CPP_DEPS += \
@@ -28,6 +30,7 @@ CPP_DEPS += \
 ./src/aplication/DisplayerCommand.d \
 ./src/aplication/ExitCommand.d \
 ./src/aplication/Menu.d \
+./src/aplication/QueryCommand.d \
 ./src/aplication/RegistrationCommand.d 
 
 

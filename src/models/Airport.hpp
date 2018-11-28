@@ -4,9 +4,9 @@
 #include <tuple>
 #include "../utilities/Console.hpp"
 
-typedef std::tuple<std::string,
-		std::string, std::string,
-		double, int, int, int> FlightInformation;
+typedef std::tuple<int, int, int,
+		double, std::string, std::string,
+		std::string> FlightInformation;
 
 class Airport {
 private:

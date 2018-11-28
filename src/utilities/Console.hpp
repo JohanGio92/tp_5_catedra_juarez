@@ -8,6 +8,8 @@
 #include <fstream>
 
 class Console {
+private:
+	static int UNO;
 public:
 	Console();
 	static Console& instance();
@@ -23,6 +25,7 @@ public:
 	void writeRightBranch();
 	void separate();
 	void ignore();
+	void clear();
 	virtual ~Console();
 };
 

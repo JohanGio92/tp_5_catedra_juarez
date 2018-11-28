@@ -3,11 +3,13 @@
 #include "CancelationCommand.hpp"
 #include "DisplayerCommand.hpp"
 #include "RegistrationCommand.hpp"
+#include "QueryCommand.h"
 
 Airline::Airline() {
 	menu.insert(new DisplayerCommand());
 	menu.insert(new RegistrationCommand());
 	menu.insert(new CancelationCommand());
+	menu.insert(new QueryCommand());
 	menu.exit();
 }
 
